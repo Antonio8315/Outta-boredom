@@ -1,0 +1,297 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #0f172a; /* Глибокий темно-синій фон */
+  color: #f8fafc;            /* Майже білий колір тексту */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Контейнер для всього додатка */
+.app-container {
+  width: 100%;
+  max-width: 500px; /* Обмежуємо ширину, щоб на телефонах та ПК виглядало як мобільний додаток */
+  min-height: 500px;
+  background-color: #1e293b; /* Світліший колір для картки-контейнера */
+  border-radius: 24px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- ГОЛОВНИЙ ЕКРАН (HERO) --- */
+.hero-screen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-badge {
+  background-color: #334155;
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-screen h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-screen p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- КНОПКИ --- */
+.btn-primary {
+  background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px #6366f1;
+}
+
+.btn-secondary {
+  background-color: #334155;
+  color: #f1f5f9;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: auto; /* Притискає кнопку "Назад" до низу картки */
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #475569;
+}
+
+/* --- ЕКРАН ТЕСТУ --- */
+.quiz-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 400px;
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-indicator {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.progress-line {
+  height: 6px;
+  background-color: #334155;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.question-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 20px 0;
+}
+
+/* Анімація обертання компаса */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* --- КАРТКИ ВАРІАНТІВ ВІДПОВІДЕЙ --- */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.option-button {
+  background-color: #334155;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  color: #f1f5f9;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  background-color: #475569;
+  border-color: #38bdf8;
+  transform: scale(1.02);
+}
+
+.option-icon {
+  font-size: 1.8rem;
+}
+
+.option-label {
+  line-height: 1.2;
+}
+
+/* --- ЕКРАН РЕЗУЛЬТАТІВ --- */
+.results-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.results-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  color: #38bdf8;
+}
+
+.results-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+/* Список карток */
+.places-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 400px; /* Додаємо скрол, якщо місць буде багато */
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Стилізація скролбару */
+.places-list::-webkit-scrollbar {
+  width: 6px;
+}
+.places-list::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 3px;
+}
+
+/* Сама картка місця */
+.place-card {
+  background-color: #334155;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.place-card:hover {
+  transform: translateY(-2px);
+}
+
+.place-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Щоб картинка не розтягувалася, а красиво обрізалася */
+}
+
+.place-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.place-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #f8fafc;
+}
+
+.place-description {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.place-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #38bdf8;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Якщо нічого не знайдено */
+.no-results {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #1e293b;
+  border: 2px dashed #334155;
+  border-radius: 16px;
+  color: #94a3b8;
+}
+
+.reset-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
