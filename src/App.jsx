@@ -6,15 +6,6 @@ import { StartScreen } from "./components/StartScreen";
 import { QuizScreen } from "./components/QuizScreen";
 import { ResultsScreen } from "./components/ResultsScreen";
 
-// Імпортуємо іконки з пакету lucide-react (вони зроблять наш інтерфейс дуже красивим)
-import {
-  MapPin,
-  Compass,
-  ArrowRight,
-  ArrowLeft,
-  RotateCcw,
-} from "lucide-react";
-
 // Описуємо наші питання для тесту
 const questions = [
   {
@@ -50,14 +41,6 @@ const questions = [
 ];
 
 function App() {
-  // --- СТЕЙТИ (ДАНІ, ЯКІ МІНЯЮТЬСЯ) ---
-
-  // 1. Поточний крок нашого додатка:
-  // 0 - Головний екран (вітання)
-  // 1 - Питання про Вайб (vibe)
-  // 2 - Питання про Компанію (company)
-  // 3 - Питання про Тривалість (duration)
-  // 4 - Фінальний екран (результати фільтрації)
   const [currentStep, setCurrentStep] = useState(0);
 
   console.log("Поточний крок:", currentStep, "Тип:", typeof currentStep);

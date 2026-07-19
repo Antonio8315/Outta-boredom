@@ -1,4 +1,4 @@
-import "../index.css";
+import "./QuizScreen.css";
 import { ArrowLeft } from "lucide-react";
 
 export function QuizScreen({ currentStep, questions, onAnswer, onBack }) {

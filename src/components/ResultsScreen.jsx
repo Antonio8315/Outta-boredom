@@ -1,6 +1,8 @@
 import { RotateCcw } from 'lucide-react';
 import { PlaceCard } from './PlaceCard';
 
+import "./ResultsScreen.css";
+
 export function ResultsScreen({ filteredPlaces, onReset }) {
   return (
     <main className="results-screen">
