@@ -98,3 +98,18 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+/* ПОСИЛАННЯ GOOGLE MAPS */
+.place-address-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #38bdf8; /* гарний блакитний колір, який у тебе вже є */
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.place-address-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
