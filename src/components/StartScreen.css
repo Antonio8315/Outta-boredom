@@ -7,6 +7,36 @@
   gap: 20px;
 }
 
+.city-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.city-icon {
+  color: #38bdf8;
+}
+
+.city-select {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.city-select option {
+  background: #1e293b; /* темний фон для списку опцій */
+  color: #fff;
+}
+
 .icon-badge {
   background-color: #334155;
   padding: 20px;

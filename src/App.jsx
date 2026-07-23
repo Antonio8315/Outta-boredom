@@ -77,6 +77,16 @@ const questions = [
 ];
 
 function App() {
+  // 1. Додаємо стейт обраного міста
+  const [selectedCity, setSelectedCity] = useState("Чернівці");
+
+  // 2. Список доступних міст (можна розширювати)
+  const CITIES = [
+    { id: "chernivtsi", name: "Чернівці" },
+    { id: "lviv", name: "Львів" },
+    { id: "kyiv", name: "Київ" },
+  ];
+
   const [currentStep, setCurrentStep] = useState(0);
 
   const [answers, setAnswers] = useState({
@@ -109,13 +119,16 @@ function App() {
     const nextStep = currentStep + 1;
 
     if (nextStep === 5) {
+      const currentCityObj = CITIES.find((c) => c.name === selectedCity);
+    const currentCitySlug = currentCityObj ? currentCityObj.id : "chernivtsi";
       const results = allPlaces.filter((place) => {
+        const matchCity = place.city === currentCitySlug;
         const matchVibe = place.vibe.includes(updatedAnswers.vibe);
         const matchCompany = place.company.includes(updatedAnswers.company);
         const matchDuration = place.duration === updatedAnswers.duration;
         const matchBudget = place.budget === updatedAnswers.budget;
 
-        return matchVibe && matchCompany && matchDuration && matchBudget;
+        return matchCity && matchVibe && matchCompany && matchDuration && matchBudget;
       });
 
       setFilteredPlaces(results);
@@ -133,6 +146,9 @@ function App() {
             post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
             "https://images.unsplash.com/photo-1544192240-4a34feb0104a?w=500"; // fallback, якщо немає фото
 
+          const citySlug =
+            post._embedded?.["wp:term"]?.[0]?.[0]?.slug || "chernivtsi";
+
           return {
             id: post.id,
             name: post.title.rendered,
@@ -143,6 +159,7 @@ function App() {
             company: post.acf?.company || [],
             duration: post.acf?.duration || "",
             budget: post.acf?.budget || "",
+            city: citySlug,
           };
         });
 
@@ -159,7 +176,14 @@ function App() {
   return (
     <div className="app-container">
       {/* 1. ГОЛОВНИЙ ЕКРАН (Крок 0) */}
-      {currentStep === 0 && <StartScreen onStart={() => setCurrentStep(1)} />}
+      {currentStep === 0 && (
+        <StartScreen
+          onStart={() => setCurrentStep(1)}
+          selectedCity={selectedCity}
+          onSelectCity={setSelectedCity}
+          cities={CITIES}
+        />
+      )}
 
       {/* 2. ЕКРАН ТЕСТУ (Кроки 1, 2, 3, 4) */}
       {currentStep > 0 && currentStep < 5 && (
