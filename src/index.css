@@ -2,7 +2,10 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #0f172a; /* Глибокий темно-синій фон */
   color: #f8fafc;            /* Майже білий колір тексту */
-}
+  background-image: 
+    radial-gradient(at 20% 20%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
+  }
 
 body {
   margin: 0;
@@ -68,4 +71,10 @@ body {
 
 .btn-secondary:hover {
   background-color: #475569;
+}
+
+@media (max-width: 550px) {
+  .app-container {
+  max-width: 250px;
+}
 }

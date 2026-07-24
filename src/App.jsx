@@ -137,8 +137,10 @@ function App() {
     setCurrentStep(nextStep);
   };
 
+  const API_URL = import.meta.env.VITE_API_URL
+
   useEffect(() => {
-    fetch("http://outta-boredom.local/wp-json/wp/v2/posts?_embed")
+    fetch(API_URL)
       .then((response) => response.json())
       .then((data) => {
         const formattedData = data.map((post) => {
