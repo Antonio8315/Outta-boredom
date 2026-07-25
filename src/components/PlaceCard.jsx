@@ -1,5 +1,6 @@
 import { MapPin } from "lucide-react";
 
+import "./PlaceCard.css";
 export function PlaceCard({ place }) {
   return (
     <div className="place-card">

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+
 }
 
 .results-header h2 {
@@ -22,7 +23,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-height: 400px; /* Додаємо скрол, якщо місць буде багато */
+  /* max-height: 400px; Додаємо скрол, якщо місць буде багато */
   overflow-y: auto;
   padding-right: 4px;
 }

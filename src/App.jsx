@@ -120,7 +120,7 @@ function App() {
 
     if (nextStep === 5) {
       const currentCityObj = CITIES.find((c) => c.name === selectedCity);
-    const currentCitySlug = currentCityObj ? currentCityObj.id : "chernivtsi";
+      const currentCitySlug = currentCityObj ? currentCityObj.id : "chernivtsi";
       const results = allPlaces.filter((place) => {
         const matchCity = place.city === currentCitySlug;
         const matchVibe = place.vibe.includes(updatedAnswers.vibe);
@@ -128,7 +128,9 @@ function App() {
         const matchDuration = place.duration === updatedAnswers.duration;
         const matchBudget = place.budget === updatedAnswers.budget;
 
-        return matchCity && matchVibe && matchCompany && matchDuration && matchBudget;
+        return (
+          matchCity && matchVibe && matchCompany && matchDuration && matchBudget
+        );
       });
 
       setFilteredPlaces(results);
@@ -137,7 +139,7 @@ function App() {
     setCurrentStep(nextStep);
   };
 
-  const API_URL = import.meta.env.VITE_API_URL
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(API_URL)
@@ -151,12 +153,39 @@ function App() {
           const citySlug =
             post._embedded?.["wp:term"]?.[0]?.[0]?.slug || "chernivtsi";
 
+          const cleanDescription = post.content.rendered
+            .replace(/<[^>]*>/g, "")
+            .replace(/&#8211;/g, "–")
+            .replace(/&#8212;/g, "—")
+            .replace(/&nbsp;/g, " ")
+            .replace(/&amp;/g, "&");
+
+          let addressArray = [];
+
+          if (Array.isArray(post.acf?.address)) {
+            // Якщо використовується Repeater у ACF Pro
+            addressArray = post.acf.address.map(
+              (item) => item.address_line || item,
+            );
+          } else if (
+            typeof post.acf?.address === "string" &&
+            post.acf.address.trim() !== ""
+          ) {
+            // Якщо це Textarea: розбиваємо рядок по перенесенню рядка (\n)
+            addressArray = post.acf.address
+              .split("\n")
+              .map((addr) => addr.trim())
+              .filter((addr) => addr.length > 0);
+          } else {
+            addressArray = ["Адреса не вказана"];
+          }
+
           return {
             id: post.id,
-            name: post.title.rendered,
+            name: post.title.rendered.replace(/&#8211;/g, "–"),
             description: post.content.rendered.replace(/<[^>]*>/g, ""),
             image: mediaUrl,
-            address: post.acf?.address || "Адреса не вказана",
+            address: addressArray,
             vibe: post.acf?.vibe || [],
             company: post.acf?.company || [],
             duration: post.acf?.duration || "",
