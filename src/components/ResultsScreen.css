@@ -23,8 +23,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* max-height: 400px; Додаємо скрол, якщо місць буде багато */
-  overflow-y: auto;
   padding-right: 4px;
 }
 
@@ -53,7 +51,7 @@
 .place-image {
   width: 100%;
   height: 180px;
-  object-fit: cover; /* Щоб картинка не розтягувалася, а красиво обрізалася */
+  object-fit: cover;
 }
 
 .place-info {
@@ -103,9 +101,9 @@
 /* ПОСИЛАННЯ GOOGLE MAPS */
 .place-address-link {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
-  color: #38bdf8; /* гарний блакитний колір, який у тебе вже є */
+  color: #38bdf8;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }

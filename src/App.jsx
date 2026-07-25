@@ -51,9 +51,9 @@ const questions = [
     key: "duration",
     title: "Скільки у тебе є вільного часу?",
     options: [
-      { label: "Швидка кава (до 1 години)", value: "short", icon: "⏱️" },
+      { label: "До 1 години", value: "short", icon: "⏱️" },
       {
-        label: "Посиденьки та розваги (2-3 години)",
+        label: "2-3 години",
         value: "medium",
         icon: "🕒",
       },
