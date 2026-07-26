@@ -16,17 +16,16 @@ export function PlaceCard({ place }) {
                 className="flex items-center gap-1 text-sm text-gray-300"
               >
                 <a
-  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${place.name}, ${addr}`
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="place-address-link"
->
-  <span>📍</span>
-                <span>{addr}</span>
-</a>
-                
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${place.name}, ${addr}`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="place-address-link"
+                >
+                  <span>📍</span>
+                  <span>{addr}</span>
+                </a>
               </div>
             ))
           ) : (

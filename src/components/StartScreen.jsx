@@ -3,7 +3,6 @@ import "./StartScreen.css";
 export function StartScreen({ onStart, selectedCity, onSelectCity, cities }) {
   return (
     <main className="hero-screen">
-      {/* Селектор вибору міста зверху */}
       <div className="city-selector-container">
         <MapPin size={18} className="city-icon" />
         <select

@@ -6,7 +6,6 @@ import { StartScreen } from "./components/StartScreen";
 import { QuizScreen } from "./components/QuizScreen";
 import { ResultsScreen } from "./components/ResultsScreen";
 
-// Описуємо наші питання для тесту
 const questions = [
   {
     id: 1,
@@ -77,14 +76,11 @@ const questions = [
 ];
 
 function App() {
-  // 1. Додаємо стейт обраного міста
   const [selectedCity, setSelectedCity] = useState("Чернівці");
 
-  // 2. Список доступних міст (можна розширювати)
   const CITIES = [
     { id: "chernivtsi", name: "Чернівці" },
     { id: "lviv", name: "Львів" },
-    { id: "kyiv", name: "Київ" },
   ];
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -102,7 +98,6 @@ function App() {
 
   // --- ЛОГІЧНІ ФУНКЦІЇ ---
 
-  // Функція для перезапуску тесту з самого початку
   const resetQuiz = () => {
     setAnswers({ vibe: "", company: "", duration: "" });
     setFilteredPlaces([]);
@@ -163,7 +158,6 @@ function App() {
           let addressArray = [];
 
           if (Array.isArray(post.acf?.address)) {
-            // Якщо використовується Repeater у ACF Pro
             addressArray = post.acf.address.map(
               (item) => item.address_line || item,
             );
@@ -171,7 +165,6 @@ function App() {
             typeof post.acf?.address === "string" &&
             post.acf.address.trim() !== ""
           ) {
-            // Якщо це Textarea: розбиваємо рядок по перенесенню рядка (\n)
             addressArray = post.acf.address
               .split("\n")
               .map((addr) => addr.trim())
@@ -203,7 +196,6 @@ function App() {
       });
   }, []);
 
-  // --- РЕНДЕР СТОРІНКИ ---
   return (
     <div className="app-container">
       {/* 1. ГОЛОВНИЙ ЕКРАН (Крок 0) */}
